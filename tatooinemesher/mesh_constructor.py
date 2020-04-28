@@ -389,6 +389,21 @@ class MeshConstructor:
             raise TatooineException("The generation of the mesh failed!")
         return "Mesh with {} nodes and {} elements".format(nnode, nelem)
 
+    def export_precourlis(self, path):
+        values = self.interp_values_from_geom()
+        with shapefile.Writer(path, shapeType=shapefile.POINT) as w:
+            w.field('Xl', 'N', decimal=6)
+            w.field('xt', 'N', decimal=6)
+            w.field('Z', 'N', decimal=6)
+
+            for point, z in zip(self.points, values[0]):
+                w.point(point['X'], point['Y'])
+                w.record(**{
+                    'Xl': point['Xl'],
+                    'xt': point['xt'],
+                    'Z': z
+                })
+
     def export_points(self, path):
         if path.endswith('.xyz'):
             logger.info("~> Exports points in xyz")

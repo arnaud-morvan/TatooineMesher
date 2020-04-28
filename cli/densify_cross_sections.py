@@ -45,7 +45,7 @@ def densify_cross_sections(args):
     mesh_constr = MeshConstructor(section_seq=section_seq, lat_step=args.lat_step,
                                   nb_pts_lat=args.nb_pts_lat, interp_values=args.interp_values)
     mesh_constr.build_interp(constraint_lines, args.long_step, True)
-    mesh_constr.export_sections(args.outfile_sections)
+    mesh_constr.export_precourlis(args.outfile_sections)
 
     t2 = perf_counter()
     logger.info("=> Execution time: {}s".format(t2 - t1))
