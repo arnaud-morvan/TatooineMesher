@@ -3,9 +3,9 @@ from math import ceil, sqrt
 import numpy as np
 import shapefile
 
-from crue10.utils import logger as crue10_logger
+#from crue10.utils import logger as crue10_logger
 from pyteltools.geom import BlueKenue as bk, Shapefile as shp
-from pyteltools.utils.log import set_logger_level as set_pyteltools_logger_level
+#from pyteltools.utils.log import set_logger_level as set_pyteltools_logger_level
 
 
 logger = logging.getLogger(__name__)
@@ -105,8 +105,8 @@ def get_field_index(filename, field_id):
 def set_logger_level(set_to_debug):
     level = logging.DEBUG if set_to_debug else logging.INFO
     logger.setLevel(level)
-    crue10_logger.setLevel(level)
-    set_pyteltools_logger_level(level)
+    #crue10_logger.setLevel(level)
+    #set_pyteltools_logger_level(level)
 
 
 class TatooineException(Exception):

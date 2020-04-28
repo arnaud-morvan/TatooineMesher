@@ -5,7 +5,7 @@ from numpy.lib.recfunctions import append_fields, rename_fields
 import os.path
 from pyteltools.geom import BlueKenue as bk, Shapefile as shp
 from pyteltools.geom import geometry
-from pyteltools.slf import Serafin
+#from pyteltools.slf import Serafin
 from pyteltools.slf.variable.variables_2d import basic_2D_vars_IDs
 from scipy import interpolate
 import shapefile
