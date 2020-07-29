@@ -9,12 +9,13 @@ install:
 	.venv/bin/pip install \
 		coloredlogs \
 		pyshp>=2.0 \
-		scipy \
-		shapely \
-		triangle
+		shapely
 
 clean:
 	rm -rf .venv
+
+help:
+	cli/densify_cross_sections.py --help
 
 test:
 	cli/densify_cross_sections.py -v \

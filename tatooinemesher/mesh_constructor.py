@@ -11,7 +11,10 @@ from scipy import interpolate
 import shapefile
 from shapely.geometry import Point
 import time
-import triangle
+try:
+    import triangle
+except:
+    pass
 
 from tatooinemesher.section import Bed
 from tatooinemesher.utils import float_vars, logger, TatooineException
