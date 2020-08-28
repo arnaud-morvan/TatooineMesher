@@ -394,17 +394,35 @@ class MeshConstructor:
 
     def export_precourlis(self, path):
         values = self.interp_values_from_geom()
-        with shapefile.Writer(path, shapeType=shapefile.POINT) as w:
-            w.field('Xl', 'N', decimal=6)
-            w.field('xt', 'N', decimal=6)
-            w.field('Z', 'N', decimal=6)
 
-            for point, z in zip(self.points, values[0]):
+        with shapefile.Writer(path, shapeType=shapefile.POINT) as w:
+            w.field('sec_id', 'N')
+            w.field('sec_name', 'C', size=80)
+            w.field('abs_long', 'N', decimal=6)
+            w.field('xt', 'N', decimal=6)
+            w.field('zfond', 'N', decimal=6)
+            w.field('layers', 'C')
+            for var_name in self.var_names()[1:]:
+                w.field(var_name[1:], 'N', decimal=6)
+
+            for point, layers, in zip(self.points, values.T):
                 w.point(point['X'], point['Y'])
                 w.record(**{
-                    'Xl': point['Xl'],
-                    'xt': point['xt'],
-                    'Z': z
+                    **{
+                        'sec_id': None,
+                        'sec_name': None,
+                        'abs_long': point['Xl'],
+                        'xt': point['xt'],
+                        'zfond': layers[0],
+                        'layers': ','.join([
+                            var_name[1:]
+                            for var_name in self.var_names()[1:]
+                        ])
+                    },
+                    **{
+                        var_name[1:]: layers[i + 1]
+                        for i, var_name in enumerate(self.var_names()[1:])
+                    }
                 })
 
     def export_points(self, path):
