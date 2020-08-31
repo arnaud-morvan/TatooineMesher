@@ -399,20 +399,20 @@ class MeshConstructor:
             w.field('sec_id', 'N')
             w.field('sec_name', 'C', size=80)
             w.field('abs_long', 'N', decimal=6)
-            w.field('xt', 'N', decimal=6)
+            w.field('p_id', 'N')
             w.field('zfond', 'N', decimal=6)
             w.field('layers', 'C')
             for var_name in self.var_names()[1:]:
                 w.field(var_name[1:], 'N', decimal=6)
 
-            for point, layers, in zip(self.points, values.T):
+            for i, (point, layers), in enumerate(zip(self.points, values.T)):
                 w.point(point['X'], point['Y'])
                 w.record(**{
                     **{
                         'sec_id': None,
                         'sec_name': None,
                         'abs_long': point['Xl'],
-                        'xt': point['xt'],
+                        'p_id': i,
                         'zfond': layers[0],
                         'layers': ','.join([
                             var_name[1:]
