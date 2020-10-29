@@ -423,7 +423,7 @@ class MeshConstructor:
                         'zfond': zfond,
                     },
                     **{
-                        layer: layers_values
+                        layer: layers_values[i]
                         for i, layer in enumerate(layers)
                     }
                 })
