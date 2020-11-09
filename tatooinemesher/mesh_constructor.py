@@ -406,6 +406,7 @@ class MeshConstructor:
             w.field('abs_long', 'N', decimal=6)
             w.field('layers', 'C')
             w.field('p_id', 'N')
+            w.field('topo_bat', 'C', size=1)
             w.field('zfond', 'N', decimal=6)
             for layer in layers:
                 w.field(layer, 'N', decimal=6)
@@ -420,6 +421,7 @@ class MeshConstructor:
                         'abs_long': point['Xl'],
                         'layers': layers_str,
                         'p_id': i,
+                        'topo_bat': 'B',
                         'zfond': zfond,
                     },
                     **{
