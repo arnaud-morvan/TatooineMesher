@@ -407,12 +407,11 @@ class MeshConstructor:
             w.field('layers', 'C')
             w.field('p_id', 'N')
             w.field('topo_bat', 'C', size=1)
-            w.field('zfond', 'N', decimal=6)
             for layer in layers:
                 w.field(layer, 'N', decimal=6)
 
-            layers_str = ','.join(layers)
-            for i, (point, zfond, layers_values), in enumerate(zip(self.points, values[0], values[1:].T)):
+            layers_str = ','.join(layers[1:])  # Skip zfond in layers field
+            for i, (point, layers_values), in enumerate(zip(self.points, values[1:].T)):
                 w.point(point['X'], point['Y'])
                 w.record(**{
                     **{
@@ -422,10 +421,9 @@ class MeshConstructor:
                         'layers': layers_str,
                         'p_id': i,
                         'topo_bat': 'B',
-                        'zfond': zfond,
                     },
                     **{
-                        layer: layers_values[i]
+                        layer: None if math.isnan(layers_values[i]) else layers_values[i]
                         for i, layer in enumerate(layers)
                     }
                 })
