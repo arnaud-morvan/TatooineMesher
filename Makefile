@@ -8,7 +8,7 @@ install:
 	.venv/bin/pip install --no-deps https://github.com/CNR-Engineering/Crue10_tools/archive/master.tar.gz#egg=Crue10_tools
 	.venv/bin/pip install \
 		coloredlogs \
-		pyshp>=2.0 \
+		"pyshp>=2.0" \
 		shapely
 
 clean:
