@@ -1,6 +1,6 @@
 DATA_PATH = /home/amorvan/dev/edf_precourlis/PreCourlis/test/data
 
-export PYTHONPATH = ${PWD}:${PWD}/.venv/lib/python3.6/site-packages
+export PYTHONPATH = ${PWD}:${PWD}/.venv/lib/python3.10/site-packages
 
 install:
 	python3 -m venv .venv --system-site-packages
