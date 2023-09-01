@@ -3,13 +3,12 @@ DATA_PATH = /home/amorvan/dev/edf_precourlis/PreCourlis/test/data
 export PYTHONPATH = ${PWD}:${PWD}/.venv/lib/python3.10/site-packages
 
 install:
-	python3 -m venv .venv --system-site-packages
+	python3 -m venv .venv
 	.venv/bin/pip install --no-deps https://github.com/CNR-Engineering/PyTelTools/archive/master.tar.gz#egg=PyTelTools
 	.venv/bin/pip install --no-deps https://github.com/CNR-Engineering/Crue10_tools/archive/master.tar.gz#egg=Crue10_tools
 	.venv/bin/pip install \
 		coloredlogs \
-		"pyshp>=2.0" \
-		shapely
+		"pyshp>=2.0"
 
 clean:
 	rm -rf .venv
