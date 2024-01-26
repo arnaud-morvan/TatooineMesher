@@ -139,8 +139,8 @@ def mesh_crue10_run(args):
                 raise RuntimeError
             coords = resample_2d_line(line.coords, floodplain_step)[1:]  # Ignore last duplicated node
 
-            hard_nodes_xy = np.array(coords, dtype=np.float)
-            hard_nodes_idx = np.arange(0, len(hard_nodes_xy), dtype=np.int)
+            hard_nodes_xy = np.array(coords, dtype=np.float64)
+            hard_nodes_idx = np.arange(0, len(hard_nodes_xy), dtype=np.int64)
             hard_segments = np.column_stack((hard_nodes_idx, np.roll(hard_nodes_idx, 1)))
 
             tri = {
@@ -149,7 +149,7 @@ def mesh_crue10_run(args):
             }
             triangulation = triangle.triangulate(tri, opts='qpa%f' % max_elem_area)
 
-            nodes_xy = np.array(triangulation['vertices'], dtype=np.float)
+            nodes_xy = np.array(triangulation['vertices'], dtype=np.float64)
             bottom = dem_interp(nodes_xy)
             points = unstructured_to_structured(np.column_stack((nodes_xy, bottom)), names=['X', 'Y', 'Z'])
 
