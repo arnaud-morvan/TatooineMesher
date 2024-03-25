@@ -4,8 +4,8 @@ export PYTHONPATH = ${PWD}:${PWD}/.venv/lib/python3.10/site-packages
 
 install:
 	python3 -m venv .venv
-	.venv/bin/pip install --no-deps https://github.com/CNR-Engineering/PyTelTools/archive/master.tar.gz#egg=PyTelTools
-	.venv/bin/pip install --no-deps https://github.com/CNR-Engineering/Crue10_tools/archive/master.tar.gz#egg=Crue10_tools
+	.venv/bin/pip install --no-deps https://github.com/CNR-Engineering/PyTelTools/archive/bfb392fc46a3973df998aafae8825ab4053a5898.tar.gz#egg=PyTelTools
+	.venv/bin/pip install --no-deps https://github.com/CNR-Engineering/Crue10_tools/archive/8a12c7ec0f076871c3f5804a011db721ceb14b7d.tar.gz#egg=Crue10_tools
 	.venv/bin/pip install \
 		coloredlogs \
 		"pyshp>=2.0"
